@@ -12,14 +12,24 @@
   --border:rgba(255,255,255,0.06);--border-hover:rgba(255,255,255,0.12);
   --text:#f0f1f5;--text-dim:#8a8fa8;--text-muted:#5a5f78;
   --accent:#7c3aed;--accent-light:#a78bfa;--accent-glow:rgba(124,58,237,0.3);
-  --success:#10b981;--success-glow:rgba(16,185,129,0.25);--warning:#f59e0b;
-  --hot:#f97316;--vip:#ec4899;--new:#06b6d4;
+  --success:#10b981;--success-glow:rgba(16,185,129,0.25);
+  --secondary:#3b82f6;--secondary-glow:rgba(59,130,246,0.25);
   --radius:20px;--radius-sm:12px;--radius-xs:8px;
+  --shadow-lg:0 20px 50px rgba(0,0,0,0.5);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;overflow-x:hidden}
 .bg-mesh{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 800px 800px at 20% 30%,rgba(124,58,237,0.08) 0%,transparent 60%),radial-gradient(ellipse 600px 600px at 80% 70%,rgba(16,185,129,0.06) 0%,transparent 60%)}
-.card{position:relative;z-index:1;background:var(--bg-card);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);border:1px solid var(--border);border-radius:var(--radius);padding:40px 28px;max-width:460px;width:100%;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,0.5)}
+
+/* NAVBAR */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 20px;background:rgba(7,8,15,0.85);backdrop-filter:blur(24px) saturate(1.5);-webkit-backdrop-filter:blur(24px) saturate(1.5);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;cursor:pointer}
+.logo-icon{width:40px;height:40px;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-icon img{width:100%;height:100%;object-fit:contain}
+.logo-text{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;background:linear-gradient(135deg,var(--text),var(--accent-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-0.5px}
+
+/* MAIN CARD */
+.card{position:relative;z-index:1;background:var(--bg-card);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);border:1px solid var(--border);border-radius:var(--radius);padding:40px 28px;max-width:480px;width:100%;text-align:center;box-shadow:var(--shadow-lg);margin-top:60px}
 .success-icon{width:70px;height:70px;border-radius:50%;background:rgba(16,185,129,0.1);border:2px solid rgba(16,185,129,0.25);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
 .success-icon svg{width:34px;height:34px;stroke:var(--success);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
 h1{font-size:24px;font-weight:800;margin-bottom:6px}
@@ -29,46 +39,96 @@ h1{font-size:24px;font-weight:800;margin-bottom:6px}
 .app-icon img{width:100%;height:100%;object-fit:contain}
 .app-details h3{font-size:15px;font-weight:700;margin-bottom:2px}
 .app-details p{font-size:11px;color:var(--text-dim)}
-.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;border-radius:12px;border:none;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;text-decoration:none;margin-bottom:8px;transition:all .3s ease}
+
+/* BUTTONS */
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px;border-radius:12px;border:none;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;text-decoration:none;margin-bottom:10px;transition:all .3s ease;color:white}
 .btn:hover{transform:translateY(-2px)}
-.btn-android{background:linear-gradient(135deg,var(--success),#059669);color:white;box-shadow:0 4px 14px var(--success-glow)}
-.btn-ios{background:linear-gradient(135deg,#3b82f6,#2563eb);color:white;box-shadow:0 4px 14px rgba(59,130,246,0.25)}
+.btn-android{background:linear-gradient(135deg,var(--success),#059669);box-shadow:0 4px 14px var(--success-glow)}
+.btn-android:hover{box-shadow:0 6px 24px var(--success-glow)}
+.btn-ios{background:linear-gradient(135deg,var(--secondary),#2563eb);box-shadow:0 4px 14px var(--secondary-glow)}
+.btn-ios:hover{box-shadow:0 6px 24px var(--secondary-glow)}
 .btn svg{width:18px;height:18px;fill:currentColor}
 .note{font-size:11px;color:var(--text-dim);margin-top:10px;line-height:1.5}
 .note a{color:var(--accent-light);text-decoration:none}
+.note a:hover{text-decoration:underline}
+
+/* FOOTER LINKS */
 .footer-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
 .footer-links a{color:var(--text-dim);text-decoration:none;font-size:10px;font-weight:500;transition:color .2s}
-.footer-links a:hover{color:var(--accent)}
-@media(max-width:400px){.card{padding:24px 16px}h1{font-size:20px}}
+.footer-links a:hover{color:var(--accent-light)}
+
+@media(max-width:400px){.card{padding:24px 16px}h1{font-size:20px}.btn{padding:13px;font-size:13px}}
 </style>
 </head>
 <body>
 <div class="bg-mesh"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+<a href="index.html" class="logo">
+<div class="logo-icon"><img src="https://iili.io/CjBzPu1.png" alt="ooqle"></div>
+<span class="logo-text">ooqle</span>
+</a>
+</nav>
+
+<!-- MAIN CARD -->
 <div class="card">
-<div class="success-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+
+<!-- Success Icon -->
+<div class="success-icon">
+<svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+</div>
+
 <h1>Download Ready!</h1>
 <p class="thank">Thank you for supporting ooqle!<br>Your download is ready below.</p>
+
+<!-- App Info -->
 <div class="app-info" id="appInfo">
-<div class="app-icon"><img src="" alt="" id="appIcon"></div>
-<div class="app-details"><h3 id="appName">Loading...</h3><p id="appMod"></p></div>
+<div class="app-icon"><img src="https://iili.io/CjBzPu1.png" alt="ooqle" id="appIcon"></div>
+<div class="app-details"><h3 id="appName">Your App is Ready</h3><p id="appMod">Click the button below to proceed</p></div>
 </div>
-<a href="#" class="btn btn-android" id="btnAndroid" target="_blank"><svg viewBox="0 0 24 24"><path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-5.84l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48C13.85 1.23 12.95 1 12 1c-.96 0-1.86.23-2.66.63L7.85.15c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31C6.97 3.26 6 5.01 6 7h12c0-1.99-.97-3.75-2.47-4.84zM10 5H9V4h1v1zm5 5h-1V4h1v1z"/></svg>Download APK</a>
-<a href="#" class="btn btn-ios" id="btnIos" target="_blank"><svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.21-1.96 1.07-3.11-1.05.05-2.31.72-3.06 1.63-.67.81-1.26 2.12-1.1 3.26 1.19.09 2.41-.6 3.09-1.78z"/></svg>Download IPA</a>
-<p class="note">If the download doesn't start, click the button above.<br>Need help? <a href="mailto:ooqlemod@gmail.com">ooqlemod@gmail.com</a></p>
+
+<!-- Download Buttons -->
+<a href="https://apkvision.org" class="btn btn-android" target="_blank" rel="noopener">
+<svg viewBox="0 0 24 24"><path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5z"/></svg>
+Download for Android
+</a>
+
+<a href="https://iosvizor.com" class="btn btn-ios" target="_blank" rel="noopener">
+<svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.21-1.96 1.07-3.11-1.05.05-2.31.72-3.06 1.63-.67.81-1.26 2.12-1.1 3.26 1.19.09 2.41-.6 3.09-1.78z"/></svg>
+Download for iOS
+</a>
+
+<p class="note">If the buttons don't work, visit <a href="https://apkvision.org" target="_blank">apkvision.org</a> or <a href="https://iosvizor.com" target="_blank">iosvizor.com</a> directly.<br>Need help? <a href="mailto:ooqlemod@gmail.com">ooqlemod@gmail.com</a></p>
+
+<!-- Footer Links -->
 <div class="footer-links">
-<a href="index.html">Home</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a>
+<a href="index.html">Home</a>
+<a href="faq.html">FAQ</a>
+<a href="contact.html">Contact</a>
+<a href="terms.html">Terms</a>
+<a href="privacy.html">Privacy</a>
+<a href="dmca.html">DMCA</a>
 </div>
+
 </div>
+
+<!-- Script to load app data if available -->
 <script>
-var app = JSON.parse(localStorage.getItem('pendingApp') || '{}');
-if(app.name){
-  document.getElementById('appName').textContent = app.name;
-  document.getElementById('appMod').textContent = app.mod || '';
-  document.getElementById('appIcon').src = app.icon || '';
-  if(app.dl) document.getElementById('btnAndroid').href = app.dl;
-  if(app.dlIos) document.getElementById('btnIos').href = app.dlIos;
-  if(app.iosOnly){ document.getElementById('btnAndroid').style.display = 'none'; document.getElementById('btnIos').style.width = '100%'; }
-}
+(function() {
+  try {
+    var app = JSON.parse(localStorage.getItem('pendingApp') || '{}');
+    if (app.name) {
+      document.getElementById('appName').textContent = app.name;
+      document.getElementById('appMod').textContent = app.mod || 'Click the button below to proceed';
+      if (app.icon) document.getElementById('appIcon').src = app.icon;
+      if (app.iosOnly) {
+        document.querySelector('.btn-android').style.display = 'none';
+        document.querySelector('.btn-ios').style.width = '100%';
+      }
+    }
+  } catch(e) {}
+})();
 </script>
 </body>
 </html>
