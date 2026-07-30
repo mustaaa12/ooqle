@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ooqle - Download Premium Modded Games & Apps</title>
+<meta name="description" content="Download 40+ premium modded games and apps for Android & iOS. Unlimited money, god mode, unlocked features. Safe, verified, and free.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#07080f;--bg-elevated:#0d0f1a;--bg-card:rgba(255,255,255,0.03);--bg-card-hover:rgba(255,255,255,0.06);
+  --border:rgba(255,255,255,0.06);--border-hover:rgba(255,255,255,0.12);
+  --text:#f0f1f5;--text-dim:#8a8fa8;--text-muted:#5a5f78;
+  --accent:#7c3aed;--accent-light:#a78bfa;--accent-glow:rgba(124,58,237,0.3);
+  --success:#10b981;--success-glow:rgba(16,185,129,0.25);--warning:#f59e0b;--danger:#ef4444;
+  --hot:#f97316;--hot-glow:rgba(249,115,22,0.3);--vip:#ec4899;--vip-glow:rgba(236,72,153,0.3);
+  --new:#06b6d4;--new-glow:rgba(6,182,212,0.25);
+  --shadow:0 4px 24px rgba(0,0,0,0.4);--shadow-lg:0 8px 40px rgba(0,0,0,0.5);
+  --radius:20px;--radius-sm:12px;--radius-xs:8px;
+}
+[data-theme="light"] {
+  --bg:#f5f6fa;--bg-elevated:#ffffff;--bg-card:rgba(0,0,0,0.02);--bg-card-hover:rgba(0,0,0,0.04);
+  --border:rgba(0,0,0,0.06);--border-hover:rgba(0,0,0,0.1);
+  --text:#1a1c2e;--text-dim:#4a4f68;--text-muted:#8a8fa8;
+  --shadow:0 4px 24px rgba(0,0,0,0.06);--shadow-lg:0 8px 40px rgba(0,0,0,0.1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;transition:background .4s,color .4s}
+.bg-mesh{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bg-mesh::before{content:'';position:absolute;inset:-50%;background:radial-gradient(ellipse 800px 800px at 20% 30%,rgba(124,58,237,0.08) 0%,transparent 60%),radial-gradient(ellipse 600px 600px at 80% 70%,rgba(16,185,129,0.06) 0%,transparent 60%),radial-gradient(ellipse 500px 500px at 50% 50%,rgba(236,72,153,0.04) 0%,transparent 60%);animation:bgShift 20s ease-in-out infinite}
+@keyframes bgShift{0%,100%{transform:translate(0,0) rotate(0deg)}33%{transform:translate(-2%,2%) rotate(1deg)}66%{transform:translate(2%,-1%) rotate(-1deg)}}
+.particle{position:fixed;border-radius:50%;pointer-events:none;z-index:0;opacity:.4}
+.p1{width:300px;height:300px;background:var(--accent);filter:blur(120px);top:-5%;right:-5%;animation:float1 15s ease-in-out infinite}
+.p2{width:250px;height:250px;background:var(--success);filter:blur(100px);bottom:-5%;left:-5%;animation:float2 18s ease-in-out infinite}
+.p3{width:200px;height:200px;background:var(--vip);filter:blur(80px);top:40%;left:30%;animation:float3 12s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,20px)}}
+@keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(20px,-30px)}}
+@keyframes float3{0%,100%{transform:translate(0,0)}50%{transform:translate(15px,25px)}}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--text-muted);border-radius:3px}::-webkit-scrollbar-thumb:hover{background:var(--text-dim)}
+
+/* NAVBAR */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:16px 28px;background:rgba(7,8,15,0.8);backdrop-filter:blur(24px) saturate(1.5);-webkit-backdrop-filter:blur(24px) saturate(1.5);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;transition:all .3s ease}
+[data-theme="light"] .navbar{background:rgba(245,246,250,0.85)}
+.navbar.scrolled{padding:12px 28px;box-shadow:var(--shadow)}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-icon{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--vip));display:flex;align-items:center;justify-content:center;box-shadow:0 0 24px var(--accent-glow);position:relative;overflow:hidden}
+.logo-icon::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,0.2) 50%,transparent 60%);animation:shine 3s ease-in-out infinite}
+@keyframes shine{0%,100%{transform:translateX(-100%)}50%{transform:translateX(100%)}}
+.logo-icon svg{width:24px;height:24px;fill:white;position:relative;z-index:1}
+.logo-text{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;background:linear-gradient(135deg,var(--text),var(--accent-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-0.5px}
+.nav-links{display:flex;align-items:center;gap:6px}
+.nav-link{padding:10px 18px;border-radius:var(--radius-xs);color:var(--text-dim);text-decoration:none;font-size:14px;font-weight:500;display:flex;align-items:center;gap:8px;transition:all .25s ease;border:1px solid transparent;position:relative;overflow:hidden}
+.nav-link::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--accent),var(--vip));opacity:0;transition:opacity .3s ease;border-radius:inherit}
+.nav-link span{position:relative;z-index:1}
+.nav-link:hover{color:var(--text)}
+.nav-link.active{color:white;border-color:rgba(124,58,237,0.3);box-shadow:0 0 20px var(--accent-glow)}
+.nav-link.active::before{opacity:1}
+.nav-link svg{width:16px;height:16px;fill:currentColor;position:relative;z-index:1}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.search-box{position:relative}
+.search-box input{width:240px;padding:10px 14px 10px 40px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-xs);color:var(--text);font-size:13px;outline:none;transition:all .3s ease;font-family:inherit}
+.search-box input:focus{width:300px;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
+.search-box input::placeholder{color:var(--text-muted)}
+.search-box svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:18px;height:18px;fill:var(--text-muted);pointer-events:none}
+.btn-icon{width:40px;height:40px;border-radius:var(--radius-xs);background:var(--bg-card);border:1px solid var(--border);color:var(--text-dim);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s ease}
+.btn-icon:hover{color:var(--accent);border-color:var(--accent);box-shadow:0 0 12px var(--accent-glow)}
+.btn-icon svg{width:20px;height:20px;fill:currentColor}
+.menu-btn{display:none}
+
+/* HERO */
+.hero{padding:140px 28px 60px;max-width:1280px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:50px;background:linear-gradient(135deg,rgba(124,58,237,0.15),rgba(236,72,153,0.1));border:1px solid rgba(124,58,237,0.2);color:var(--accent-light);font-size:13px;font-weight:600;margin-bottom:24px;backdrop-filter:blur(10px)}
+.hero-badge .pulse{width:8px;height:8px;border-radius:50%;background:var(--success);box-shadow:0 0 8px var(--success-glow);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.8)}}
+.hero h1{font-family:'Space Grotesk',sans-serif;font-size:52px;font-weight:800;line-height:1.1;margin-bottom:20px;letter-spacing:-1.5px}
+.hero h1 .gradient{background:linear-gradient(135deg,var(--accent),var(--vip),var(--hot));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:18px;color:var(--text-dim);max-width:600px;margin:0 auto 40px;line-height:1.6}
+.hero-stats{display:flex;justify-content:center;gap:48px;margin-top:48px}
+.hero-stat{text-align:center}
+.hero-stat .num{font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-stat .lbl{font-size:13px;color:var(--text-muted);margin-top:4px;text-transform:uppercase;letter-spacing:1px}
+
+/* MAIN */
+.main{padding:0 28px 60px;max-width:1280px;margin:0 auto;position:relative;z-index:1}
+.sec-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.sec-title{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;display:flex;align-items:center;gap:10px}
+.sec-title .icon{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--vip));display:flex;align-items:center;justify-content:center}
+.sec-title .icon svg{width:18px;height:18px;fill:white}
+
+/* TRENDING */
+.trending-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;margin-bottom:60px}
+.trend-card{background:var(--bg-card);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:all .4s cubic-bezier(.4,0,.2,1);cursor:pointer;position:relative;overflow:hidden;display:flex;gap:20px;align-items:flex-start}
+.trend-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--vip),var(--hot));transform:scaleX(0);transition:transform .4s ease}
+.trend-card:hover{transform:translateY(-4px);background:var(--bg-card-hover);box-shadow:var(--shadow-lg);border-color:rgba(124,58,237,0.2)}
+.trend-card:hover::before{transform:scaleX(1)}
+.trend-card .icon-wrap{width:72px;height:72px;border-radius:18px;overflow:hidden;flex-shrink:0;box-shadow:0 8px 24px rgba(0,0,0,0.3);position:relative;background:#0d0f1a}
+.trend-card .icon-wrap img{width:100%;height:100%;object-fit:contain}
+.trend-card .icon-wrap .badge{position:absolute;top:-4px;right:-4px;padding:3px 8px;border-radius:8px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.5px}
+.badge.hot{background:var(--hot);color:white;box-shadow:0 2px 8px var(--hot-glow)}
+.badge.vip{background:var(--vip);color:white;box-shadow:0 2px 8px var(--vip-glow)}
+.badge.new{background:var(--new);color:white;box-shadow:0 2px 8px var(--new-glow)}
+.trend-card .info{flex:1;min-width:0}
+.trend-card .name{font-size:17px;font-weight:700;margin-bottom:6px}
+.trend-card .desc{font-size:13px;color:var(--text-dim);line-height:1.5;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.trend-card .meta{display:flex;align-items:center;gap:16px;font-size:12px;color:var(--text-muted)}
+.trend-card .meta span{display:flex;align-items:center;gap:4px}
+.trend-card .meta svg{width:14px;height:14px;fill:currentColor}
+.trend-card .meta .stars{fill:var(--warning)!important}
+
+/* GAME GRID */
+.game-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;margin-bottom:60px}
+.game-card{background:var(--bg-card);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all .4s cubic-bezier(.4,0,.2,1);cursor:pointer;position:relative}
+.game-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);border-color:rgba(124,58,237,0.2)}
+.game-card .cover{height:160px;overflow:hidden;position:relative;background:#0d0f1a}
+.game-card .cover img{width:100%;height:100%;object-fit:contain;transition:transform .5s ease;padding:10px}
+.game-card:hover .cover img{transform:scale(1.05)}
+.game-card .cover .overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(7,8,15,0.9) 100%)}
+.game-card .cover .platforms{position:absolute;top:12px;right:12px;display:flex;gap:6px}
+.game-card .cover .platforms span{padding:4px 10px;border-radius:6px;font-size:10px;font-weight:700;text-transform:uppercase;background:rgba(0,0,0,0.5);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);color:white}
+.game-card .cover .platforms span.android{background:rgba(16,185,129,0.2);border-color:rgba(16,185,129,0.3);color:var(--success)}
+.game-card .cover .platforms span.ios{background:rgba(59,130,246,0.2);border-color:rgba(59,130,246,0.3);color:#60a5fa}
+.game-card .content{padding:20px}
+.game-card .content .name{font-size:16px;font-weight:700;margin-bottom:8px}
+.game-card .content .desc{font-size:12px;color:var(--text-dim);line-height:1.5;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.game-card .content .footer{display:flex;align-items:center;justify-content:space-between}
+.game-card .content .rating{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600}
+.game-card .content .rating svg{width:14px;height:14px;fill:var(--warning)}
+.game-card .content .downloads{font-size:12px;color:var(--text-muted);display:flex;align-items:center;gap:4px}
+.game-card .content .downloads svg{width:12px;height:12px;fill:currentColor}
+/* FIXED: Download button always visible on mobile */
+.game-card .content .btn-download{padding:8px 16px;border-radius:var(--radius-xs);background:linear-gradient(135deg,var(--accent),var(--vip));color:white;border:none;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:12px;width:100%;opacity:1;transform:none;transition:all .3s ease}
+.game-card .content .btn-download:hover{box-shadow:0 4px 16px var(--accent-glow);transform:translateY(-2px)}
+
+/* INFO */
+.info-sec{background:var(--bg-card);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:var(--radius);padding:48px;margin-bottom:60px;text-align:center;position:relative;overflow:hidden}
+.info-sec::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse,rgba(124,58,237,0.05) 0%,transparent 70%);pointer-events:none}
+.info-sec h2{font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;margin-bottom:16px;position:relative}
+.info-sec h2 .highlight{background:linear-gradient(135deg,var(--accent),var(--vip));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.info-sec p{color:var(--text-dim);line-height:1.8;max-width:700px;margin:0 auto;position:relative}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--border);padding:48px 28px;background:var(--bg-elevated);position:relative;z-index:1}
+.footer-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+.footer-brand .logo-text{font-size:20px;margin-bottom:12px}
+.footer-brand p{font-size:13px;color:var(--text-dim);line-height:1.7;margin-bottom:20px}
+.footer-brand .socials{display:flex;gap:10px}
+.footer-brand .socials a{width:36px;height:36px;border-radius:10px;background:var(--bg-card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-dim);transition:all .2s;text-decoration:none}
+.footer-brand .socials a:hover{color:var(--accent);border-color:var(--accent);box-shadow:0 0 12px var(--accent-glow)}
+.footer-brand .socials a svg{width:16px;height:16px;fill:currentColor}
+.footer-col h4{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;margin-bottom:16px;text-transform:uppercase;letter-spacing:1px;color:var(--text-dim)}
+.footer-col a{display:block;color:var(--text-muted);text-decoration:none;font-size:13px;padding:6px 0;transition:all .2s}
+.footer-col a:hover{color:var(--accent);padding-left:4px}
+.footer-bottom{border-top:1px solid var(--border);margin-top:40px;padding-top:24px;text-align:center;font-size:12px;color:var(--text-muted)}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,0.7);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;opacity:0;transition:opacity .3s ease;padding:20px}
+.modal-overlay.active{display:flex;opacity:1}
+.modal{background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius);width:100%;max-width:480px;padding:32px;position:relative;box-shadow:var(--shadow-lg);transform:scale(0.95);transition:transform .3s ease}
+.modal-overlay.active .modal{transform:scale(1)}
+.modal-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:var(--radius-xs);background:var(--bg-card);border:1px solid var(--border);color:var(--text-dim);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.modal-close:hover{background:rgba(239,68,68,0.1);color:var(--danger);border-color:rgba(239,68,68,0.3)}
+.modal-close svg{width:16px;height:16px;fill:currentColor}
+.modal-icon{width:80px;height:80px;border-radius:20px;overflow:hidden;margin:0 auto 20px;box-shadow:0 12px 32px rgba(0,0,0,0.3);background:#0d0f1a}
+.modal-icon img{width:100%;height:100%;object-fit:contain}
+.modal-title{font-size:20px;font-weight:700;text-align:center;margin-bottom:4px}
+.modal-sub{text-align:center;color:var(--text-dim);font-size:13px;margin-bottom:20px}
+.modal-meta{display:flex;justify-content:center;gap:24px;margin-bottom:24px;font-size:13px;color:var(--text-dim)}
+.modal-meta span{display:flex;align-items:center;gap:6px}
+.modal-meta svg{width:14px;height:14px;fill:currentColor}
+.modal-meta .stars{fill:var(--warning)!important}
+.modal-desc{background:var(--bg-card);border-radius:var(--radius-sm);padding:16px;font-size:13px;color:var(--text-dim);line-height:1.7;margin-bottom:24px;border:1px solid var(--border)}
+.modal-btns{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.modal-btns .btn{padding:14px;border-radius:var(--radius-xs);border:none;font-weight:700;font-size:14px;cursor:pointer;transition:all .25s ease;display:flex;align-items:center;justify-content:center;gap:8px;font-family:inherit}
+.modal-btns .btn-android{background:linear-gradient(135deg,var(--success),#059669);color:white;box-shadow:0 4px 16px var(--success-glow)}
+.modal-btns .btn-android:hover{transform:translateY(-2px);box-shadow:0 6px 24px var(--success-glow)}
+.modal-btns .btn-ios{background:linear-gradient(135deg,#3b82f6,#2563eb);color:white;box-shadow:0 4px 16px rgba(59,130,246,0.25)}
+.modal-btns .btn-ios:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(59,130,246,0.3)}
+.modal-btns .btn svg{width:18px;height:18px;fill:currentColor}
+.modal-btns .btn-ios-only{grid-column:1/-1;background:linear-gradient(135deg,var(--accent),var(--vip));color:white;box-shadow:0 4px 16px var(--accent-glow)}
+.modal-btns .btn-ios-only:hover{transform:translateY(-2px);box-shadow:0 6px 24px var(--accent-glow)}
+.progress-wrap{display:none;margin:24px 0;text-align:center}
+.progress-wrap.active{display:block}
+.progress-bar{height:6px;background:var(--bg-card);border-radius:3px;overflow:hidden;margin-bottom:12px;border:1px solid var(--border)}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--vip));border-radius:3px;width:0%;transition:width .3s ease;box-shadow:0 0 12px var(--accent-glow)}
+.progress-info{display:flex;justify-content:space-between;font-size:12px;color:var(--text-dim)}
+.progress-info .pct{font-weight:700;color:var(--accent)}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--bg-elevated);border:1px solid var(--accent);border-radius:var(--radius-sm);padding:14px 24px;display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px;color:var(--text);box-shadow:0 10px 30px rgba(0,0,0,0.3),0 0 20px var(--accent-glow);z-index:3000;opacity:0;transition:all .4s cubic-bezier(.68,-.55,.265,1.55)}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.toast svg{width:20px;height:20px;fill:var(--accent)}
+.mobile-nav{display:none;position:fixed;top:68px;left:0;right:0;background:var(--bg-elevated);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);z-index:999;padding:12px;flex-direction:column;gap:4px}
+.mobile-nav.show{display:flex}
+.mobile-nav a{padding:12px 16px;border-radius:var(--radius-xs);color:var(--text-dim);text-decoration:none;font-size:14px;font-weight:500;display:flex;align-items:center;gap:10px}
+.mobile-nav a.active{color:var(--accent);background:rgba(124,58,237,0.08)}
+.mobile-nav a svg{width:18px;height:18px;fill:currentColor}
+@media(max-width:768px){
+  .navbar{padding:12px 16px}.nav-links,.search-box{display:none}.menu-btn{display:flex}
+  .hero{padding:120px 16px 40px}.hero h1{font-size:36px}.hero-stats{gap:24px}.hero-stat .num{font-size:28px}
+  .main{padding:0 16px 40px}.trending-grid{grid-template-columns:1fr}.game-grid{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr;text-align:center}.footer-brand .socials{justify-content:center}
+  .info-sec{padding:32px 20px;margin-bottom:40px}.info-sec h2{font-size:24px}
+  .modal{padding:24px}.modal-btns{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="bg-mesh"></div><div class="particle p1"></div><div class="particle p2"></div><div class="particle p3"></div>
+<nav class="navbar" id="navbar">
+<a href="#" class="logo">
+<div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+<span class="logo-text">ooqle</span>
+</a>
+<div class="nav-links">
+<a href="#" class="nav-link active" onclick="setSection('all',this);return false;"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg><span>Discover</span></a>
+<a href="#" class="nav-link" onclick="setSection('games',this);return false;"><svg viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg><span>Games</span></a>
+<a href="#" class="nav-link" onclick="setSection('apps',this);return false;"><svg viewBox="0 0 24 24"><path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/></svg><span>Apps</span></a>
+</div>
+<div class="nav-actions">
+<div class="search-box"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><input type="text" placeholder="Search mods..." id="searchInput" onkeyup="doSearch()"></div>
+<button class="btn-icon" onclick="toggleTheme()" title="Toggle theme"><svg viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1z"/></svg></button>
+<button class="btn-icon menu-btn" onclick="toggleMobileMenu()"><svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></button>
+</div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+<a href="#" class="active" onclick="setSection('all',this);toggleMobileMenu();return false;"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>Discover</a>
+<a href="#" onclick="setSection('games',this);toggleMobileMenu();return false;"><svg viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>Games</a>
+<a href="#" onclick="setSection('apps',this);toggleMobileMenu();return false;"><svg viewBox="0 0 24 24"><path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/></svg>Apps</a>
+</div>
+
+<section class="hero">
+<div class="hero-badge"><span class="pulse"></span> 40+ Premium Mods Available</div>
+<h1>Unlock Your <span class="gradient">Ultimate Gaming</span> Experience</h1>
+<p>Download the most wanted modded games and apps in the US market. God mode, unlimited money, unlocked features — all verified safe.</p>
+<div class="hero-stats">
+<div class="hero-stat"><div class="num">40+</div><div class="lbl">Premium Mods</div></div>
+<div class="hero-stat"><div class="num">3M+</div><div class="lbl">Total Downloads</div></div>
+<div class="hero-stat"><div class="num">99.9%</div><div class="lbl">Safe Rate</div></div>
+<div class="hero-stat"><div class="num">24/7</div><div class="lbl">Updates</div></div>
+</div>
+</section>
+
+<main class="main">
+<section id="sec-trending">
+<div class="sec-header"><h2 class="sec-title"><div class="icon"><svg viewBox="0 0 24 24"><path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"/></svg></div>Trending Now</h2></div>
+<div class="trending-grid" id="trendingGrid"></div>
+</section>
+
+<section id="sec-games">
+<div class="sec-header"><h2 class="sec-title"><div class="icon"><svg viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg></div>All Modded Games</h2></div>
+<div class="game-grid" id="gamesGrid"></div>
+</section>
+
+<section class="info-sec">
+<h2>Why Choose <span class="highlight">ooqle</span> for Modded Games?</h2>
+<p>At ooqle, we are passionate about bringing gamers around the world access to the most exciting and high-quality modded versions of popular mobile games. Our mission is to make modded gaming safer, more accessible, and more enjoyable for everyone. Every mod is tested and verified before being shared with our community. We focus on the US market demands — delivering the most wanted titles with unlimited resources, god mode, ESP hacks, and premium unlocks.</p>
+</section>
+</main>
+
+<footer class="footer">
+<div class="footer-inner">
+<div class="footer-brand">
+<div class="logo"><div class="logo-icon" style="width:32px;height:32px;border-radius:10px"><svg viewBox="0 0 24 24" style="width:18px;height:18px"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div><span class="logo-text">ooqle</span></div>
+<p>Your trusted source for premium modded games and apps. Safe downloads, verified mods, and endless fun.</p>
+<div class="socials"><a href="#"><svg viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a></div>
+</div>
+<div class="footer-col"><h4>Quick Links</h4><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Home</a><a href="#" onclick="setSection('games');return false;">Games</a><a href="#" onclick="setSection('apps');return false;">Apps</a></div>
+<div class="footer-col"><h4>Legal</h4><a href="#" onclick="alert('Privacy Policy page will be available soon. For privacy concerns, contact ooqlemod@gmail.com');return false;">Privacy Policy</a><a href="#" onclick="alert('Terms of Service page will be available soon. By using this site, you agree to our terms.');return false;">Terms of Service</a><a href="#" onclick="alert('DMCA page will be available soon. For copyright claims, contact ooqlemod@gmail.com');return false;">DMCA</a></div>
+<div class="footer-col"><h4>Contact</h4><a href="mailto:ooqlemod@gmail.com">ooqlemod@gmail.com</a></div>
+</div>
+<div class="footer-bottom">© 2026 ooqle. All rights reserved. We are not the creators of these mods.</div>
+</footer>
+
+<div class="modal-overlay" id="modal">
+<div class="modal">
+<button class="modal-close" onclick="closeModal()"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
+<div class="modal-icon"><img src="" alt="" id="mIcon"></div>
+<h3 class="modal-title" id="mTitle">App Name</h3>
+<p class="modal-sub" id="mSub">Mod Features</p>
+<div class="modal-meta">
+<span><svg viewBox="0 0 24 24" class="stars"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><span id="mRating">4.9</span></span>
+<span><svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg><span id="mSize">100MB</span></span>
+<span><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg><span id="mDownloads">10K+</span></span>
+</div>
+<div class="modal-desc" id="mDesc">Description</div>
+<div class="progress-wrap" id="progWrap">
+<div class="progress-bar"><div class="progress-fill" id="progFill"></div></div>
+<div class="progress-info"><span id="progStatus">Preparing download...</span><span class="pct" id="progPct">0%</span></div>
+</div>
+<div class="modal-btns" id="mBtns">
+<button class="btn btn-android" onclick="startDL('android')"><svg viewBox="0 0 24 24"><path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-5.84l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48C13.85 1.23 12.95 1 12 1c-.96 0-1.86.23-2.66.63L7.85.15c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31C6.97 3.26 6 5.01 6 7h12c0-1.99-.97-3.75-2.47-4.84zM10 5H9V4h1v1zm5 5h-1V4h1v1z"/></svg>Download APK</button>
+<button class="btn btn-ios" onclick="startDL('ios')"><svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.21-1.96 1.07-3.11-1.05.05-2.31.72-3.06 1.63-.67.81-1.26 2.12-1.1 3.26 1.19.09 2.41-.6 3.09-1.78z"/></svg>Download IPA</button>
+</div>
+</div>
+</div>
+
+<div class="toast" id="toast"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg><span id="toastMsg">Done!</span></div>
+
+<script>
+const gamesData = [
+  {name:"Sherlock",rating:"4.9",downloads:"15K+",size:"45MB",icon:"https://iili.io/CKS0L7I.webp",cover:"https://iili.io/CKS0L7I.webp",mod:"Premium + Unlimited Searches",badge:"hot",desc:"Premium unlocked with unlimited searches for iOS. The most powerful iOS search tool available — no jailbreak required.",iosOnly:true,downloadUrlIos:"https://drive.google.com/file/d/1FsOu3RuhABGRwYW6Dbr6AkzZG8Ovb7s7/view?usp=drivesdk"},
+  {name:"Planet of Lana",rating:"4.8",downloads:"18K+",size:"1.4GB",icon:"https://iili.io/CjaMfBR.jpg",cover:"https://iili.io/CjaMfBR.jpg",mod:"Full Game Unlocked + All Chapters + No Ads",badge:"new",desc:"Experience the breathtaking cinematic puzzle adventure. Guide Lana and her loyal companion Mui through a world of stunning hand-painted art, mysterious machines, and an epic sci-fi story. Full game unlocked with all chapters included.",fomo:"⚠️ Just added — first 100 downloads get exclusive access"},
+  {name:"GTA V Mobile",rating:"4.9",downloads:"120K+",size:"2.6GB",icon:"https://iili.io/BynB57f.webp",cover:"https://iili.io/BynB57f.webp",mod:"Unlimited Money + All Vehicles + God Mode",badge:"vip",desc:"Experience the full Grand Theft Auto V on your mobile device with unlimited money, all vehicles unlocked, and god mode. The complete Los Santos experience optimized for mobile."},
+  {name:"PUBG Mobile Mod",rating:"4.7",downloads:"150K+",size:"1.5GB",icon:"https://iili.io/BpinXKN.webp",cover:"https://iili.io/BpinXKN.webp",mod:"ESP + Wallhack + Aimbot + No Recoil",badge:"hot",desc:"Dominate every match with ESP, wallhack, aimbot, and zero recoil. See enemies through walls and land every shot with precision."},
+  {name:"Fortnite Mobile",rating:"4.8",downloads:"90K+",size:"1.8GB",icon:"https://iili.io/BpqsE8u.png",cover:"https://iili.io/BpqsE8u.png",mod:"ESP + Aimbot + Unlimited V-Bucks",badge:"hot",desc:"Get the ultimate Fortnite advantage with ESP hack, precision aimbot, and unlimited V-Bucks to unlock every skin and battle pass."},
+  {name:"GTA San Andreas",rating:"4.8",downloads:"100K+",size:"2.7GB",icon:"https://iili.io/BpqsUAJ.png",cover:"https://iili.io/BpqsUAJ.png",mod:"Unlimited Money + All Missions + God Mode",badge:"vip",desc:"Return to San Andreas with unlimited money, all missions unlocked, and god mode. Relive the classic with complete freedom."},
+  {name:"Call of Duty Mobile",rating:"4.9",downloads:"200K+",size:"3.9GB",icon:"https://iili.io/BQemFQ1.png",cover:"https://iili.io/BQemFQ1.png",mod:"ESP + Aimbot + Radar Hack",badge:"hot",desc:"ESP, aimbot, and radar hack for COD Mobile. Reach legendary rank undetected with precision targeting and enemy tracking."},
+  {name:"Minecraft Mod",rating:"4.4",downloads:"250K+",size:"922MB",icon:"https://iili.io/BtdL1kJ.jpg",cover:"https://iili.io/BtdLUhl.webp",mod:"Mod Menu + All Items + God Mode",badge:"vip",desc:"Minecraft with full mod menu, unlimited items, god mode, and all skins unlocked. Build and survive without limits."},
+  {name:"Roblox Hack",rating:"4.2",downloads:"180K+",size:"150MB",icon:"https://iili.io/BpPzgCx.jpg",cover:"https://iili.io/BpPzP3B.png",mod:"Infinite Robux + Fly Hack + God Mode",badge:"hot",desc:"Infinite Robux, fly anywhere, walk through walls, and god mode in every Roblox game. The ultimate Roblox exploit."},
+  {name:"Brawl Stars Mod",rating:"4.3",downloads:"80K+",size:"480MB",icon:"https://iili.io/Bp6ZGFS.png",cover:"https://iili.io/Bp6Z1P2.webp",mod:"All Brawlers + Unlimited Gems + Private Server",badge:"hot",desc:"All brawlers unlocked, unlimited gems, and private server access. Play with maxed characters and dominate every match."},
+  {name:"Dragon Ball Legends",rating:"4.5",downloads:"55K+",size:"320MB",icon:"https://iili.io/BpPdf0G.png",cover:"https://iili.io/BpPdKfs.jpg",mod:"Unlimited Crystals + God Mode + All Characters",badge:"vip",desc:"Unlimited crystals, god mode, and every character unlocked including Ultra Instinct Goku. The ultimate DB Legends experience."},
+  {name:"Baseball 9 Mod",rating:"4.4",downloads:"40K+",size:"280MB",icon:"https://iili.io/Bp6bLVj.png",cover:"https://iili.io/Bp6b4R9.jpg",mod:"Unlimited Money + All Players Maxed",badge:"hot",desc:"Unlimited money to build your dream team, all players maxed out, and auto-win features for effortless league domination."},
+  {name:"FC Mobile 25 Mod",rating:"4.9",downloads:"65K+",size:"207MB",icon:"https://iili.io/BQep4b2.jpg",cover:"https://iili.io/BQep4b2.jpg",mod:"Unlimited Coins + All Players Unlocked",badge:"hot",desc:"Unlimited coins and points to build your ultimate football team. All players unlocked for the perfect squad."},
+  {name:"eFootball 2025 Mod",rating:"4.9",downloads:"70K+",size:"2.1GB",icon:"https://iili.io/BQemqEg.png",cover:"https://iili.io/BQemqEg.png",mod:"All Players 100 OVR + Unlimited Budget",badge:"vip",desc:"All players rated 100 OVR with unlimited transfer budget. Build the ultimate football dynasty."},
+  {name:"NBA 2K20 Mod",rating:"4.4",downloads:"35K+",size:"3.1GB",icon:"https://iili.io/BpqsQcX.png",cover:"https://iili.io/BpqsQcX.png",mod:"All Players 99 OVR + Unlimited VC",badge:"vip",desc:"Every player 99 overall with unlimited VC. Create your legend and dominate the court."},
+  {name:"Subway Surfers Mod",rating:"4.8",downloads:"300K+",size:"150MB",icon:"https://iili.io/BpqithQ.png",cover:"https://iili.io/BpqithQ.png",mod:"Unlimited Coins + Keys + All Characters",badge:"hot",desc:"Unlimited coins and keys to unlock every character and hoverboard. Run endlessly without limits."},
+  {name:"Stardew Valley",rating:"4.8",downloads:"45K+",size:"400MB",icon:"https://iili.io/Bpqs5Zl.png",cover:"https://iili.io/Bpqs5Zl.png",mod:"Unlimited Money + All Items + God Mode",badge:"vip",desc:"Unlimited money, all items, and god mode for the ultimate farming experience. Build your dream farm instantly."},
+  {name:"Red Dead Redemption",rating:"4.3",downloads:"18K+",size:"2.1GB",icon:"https://iili.io/BpP9wdl.webp",cover:"https://iili.io/BpP9N72.webp",mod:"Full Game + No Netflix Required",badge:"hot",desc:"Play Red Dead Redemption without Netflix subscription. Full game unlocked for iOS and Android."},
+  {name:"Hollow Knight Mobile",rating:"4.9",downloads:"21K+",size:"1.2GB",icon:"https://iili.io/BpPBaGS.jpg",cover:"https://iili.io/BpPBE8u.webp",mod:"Full Game + All DLC + God Mode",badge:"vip",desc:"The complete Hollow Knight experience with all DLC and god mode. Explore Hallownest with optimized mobile controls."},
+  {name:"Shadow Fight 2 Mod",rating:"4.9",downloads:"95K+",size:"313MB",icon:"https://iili.io/BQepgR4.jpg",cover:"https://iili.io/BQepgR4.jpg",mod:"Unlimited Gems + All Weapons + God Mode",badge:"hot",desc:"Unlimited gems, all weapons unlocked, and god mode. Become the ultimate shadow fighter with infinite power."},
+  {name:"Nulls Brawl Mod",rating:"4.9",downloads:"110K+",size:"860MB",icon:"https://iili.io/BQepkfn.png",cover:"https://iili.io/BQepkfn.png",mod:"All Brawlers + Private Server",badge:"vip",desc:"Private server with all brawlers unlocked, unlimited resources, and exclusive skins. Play without restrictions."},
+  {name:"Asphalt Legends Unite",rating:"4.8",downloads:"50K+",size:"2.1GB",icon:"https://iili.io/BQepwxI.jpg",cover:"https://iili.io/BQepwxI.jpg",mod:"All Cars Unlocked + Unlimited Nitro",badge:"hot",desc:"Every car unlocked with unlimited nitro boost. Race through stunning tracks at maximum speed."},
+  {name:"Warframe Mobile",rating:"4.9",downloads:"15K+",size:"1.7GB",icon:"https://iili.io/BQemMjS.png",cover:"https://iili.io/BQemMjS.png",mod:"God Mode + Unlimited Platinum",badge:"vip",desc:"God mode and unlimited platinum for the ultimate Tenno experience. All warframes and weapons at your disposal."},
+  {name:"Mobile Legends Mod",rating:"4.8",downloads:"85K+",size:"327MB",icon:"https://iili.io/BQemB4a.png",cover:"https://iili.io/BQemB4a.png",mod:"ESP Hack + Map Hack + Unlock Skins",badge:"hot",desc:"ESP and map hack for Mobile Legends. See all enemies, unlock every skin, and climb ranks effortlessly."},
+  {name:"Clash Royale Mod",rating:"4.8",downloads:"75K+",size:"480MB",icon:"https://iili.io/BtdLarF.png",cover:"https://iili.io/BtdLarF.png",mod:"Unlimited Gems + Gold + All Cards",badge:"hot",desc:"Unlimited gems and gold with every card maxed. Build the ultimate deck and dominate the arena."},
+  {name:"Car Parking Multiplayer",rating:"4.8",downloads:"60K+",size:"1.83GB",icon:"https://iili.io/Bt2sy8u.webp",cover:"https://iili.io/Bt2tpiQ.webp",mod:"Unlimited Money + All Cars Unlocked",badge:"hot",desc:"Unlimited money and every car unlocked. Explore the open world with your dream garage."},
+  {name:"Avatar World",rating:"4.9",downloads:"35K+",size:"1.18GB",icon:"https://iili.io/BtdQ8cF.webp",cover:"https://iili.io/Bt2pkrl.webp",mod:"VIP Unlocked + All Items",badge:"hot",desc:"VIP access with every item and location unlocked. Create your perfect avatar life without restrictions."},
+  {name:"Palworld Mobile",rating:"4.9",downloads:"25K+",size:"575MB",icon:"https://iili.io/BQempnt.jpg",cover:"https://iili.io/BQempnt.jpg",mod:"All Pals Unlocked + God Mode",badge:"new",desc:"All Pals unlocked with god mode and unlimited resources. Survive and thrive in the Palworld universe."},
+  {name:"Invincible Mobile Game",rating:"4.6",downloads:"13K+",size:"520MB",icon:"https://iili.io/BpPAfZg.png",cover:"https://iili.io/BpPuia2.png",mod:"All Heroes + God Mode + Unlimited Resources",badge:"hot",desc:"Every hero unlocked with god mode and unlimited resources. Build your superhero dream team."},
+  {name:"Terraria Mod",rating:"4.7",downloads:"30K+",size:"300MB",icon:"https://iili.io/BpqsRj4.png",cover:"https://iili.io/BpqsRj4.png",mod:"Unlimited Resources + God Mode + All Items",badge:"vip",desc:"Unlimited resources, god mode, and all items for the ultimate Terraria adventure. Dig, fight, explore, build without limits."},
+  {name:"The Amazing Spider-Man 2",rating:"4.5",downloads:"20K+",size:"1.4GB",icon:"https://iili.io/BpqsGyb.png",cover:"https://iili.io/BpqsGyb.png",mod:"Unlimited Money + All Suits Unlocked",badge:"hot",desc:"Unlimited money and every Spider-Man suit unlocked. Swing through New York with unlimited power."},
+  {name:"Poppy Playtime Chapter 5",rating:"4.0",downloads:"28K+",size:"934MB",icon:"https://iili.io/BtdLEmv.jpg",cover:"https://iili.io/BtdZnNj.webp",mod:"Full Chapter Unlocked + No Ads",badge:"new",desc:"The complete Chapter 5 experience unlocked with no ads. Face Huggy Wuggy and uncover the factory's darkest secrets."}
+];
+
+const appsData = [
+  {name:"Sherlock",rating:"4.9",downloads:"15K+",size:"45MB",icon:"https://iili.io/CKS0L7I.webp",cover:"https://iili.io/CKS0L7I.webp",mod:"Premium + Unlimited Searches",badge:"hot",desc:"Premium unlocked with unlimited searches for iOS. The most powerful iOS search tool available — no jailbreak required.",iosOnly:true,downloadUrlIos:"https://drive.google.com/file/d/1FsOu3RuhABGRwYW6Dbr6AkzZG8Ovb7s7/view?usp=drivesdk"},
+  {name:"Spotify Premium",rating:"4.9",downloads:"500K+",size:"92MB",icon:"https://iili.io/BbtODAB.jpg",cover:"https://iili.io/BbtODAB.jpg",mod:"Premium + No Ads + Unlimited Skips",badge:"vip",desc:"Spotify Premium with all features unlocked. No ads, unlimited skips, and offline downloads for endless music."},
+  {name:"CapCut Pro",rating:"4.9",downloads:"200K+",size:"298MB",icon:"https://iili.io/BbtOsFj.jpg",cover:"https://iili.io/BbtOsFj.jpg",mod:"Pro + No Watermark + All Effects",badge:"hot",desc:"CapCut Pro with no watermark, all premium effects, templates, and 4K export. Edit like a professional."},
+  {name:"Netflix Premium",rating:"4.8",downloads:"300K+",size:"122MB",icon:"https://iili.io/BbtOyoF.jpg",cover:"https://iili.io/BbtOyoF.jpg",mod:"All Regions + 4K + No Account Required",badge:"vip",desc:"Watch Netflix content from all regions in 4K quality without needing an account. Unlimited streaming."},
+  {name:"YouTube Premium",rating:"4.9",downloads:"1M+",size:"70MB",icon:"https://iili.io/BbteK9p.jpg",cover:"https://iili.io/BbteK9p.jpg",mod:"No Ads + Background Play + Downloads",badge:"hot",desc:"YouTube without ads, background playback, and video downloads. The complete premium experience."},
+  {name:"Instagram Pro",rating:"4.8",downloads:"400K+",size:"52MB",icon:"https://iili.io/BbtOQ8Q.jpg",cover:"https://iili.io/BbtOQ8Q.jpg",mod:"No Ads + Media Download + Ghost Mode",badge:"hot",desc:"Instagram without ads, download any photo or video, and ghost mode for private viewing."},
+  {name:"TikTok Mod",rating:"4.9",downloads:"600K+",size:"554MB",icon:"https://iili.io/Bbte3SR.jpg",cover:"https://iili.io/Bbte3SR.jpg",mod:"No Ads + Download Without Watermark",badge:"hot",desc:"TikTok without ads and download any video without watermark. Region unlocked for global content."},
+  {name:"Telegram Premium",rating:"4.9",downloads:"150K+",size:"145MB",icon:"https://iili.io/BbtOt9V.jpg",cover:"https://iili.io/BbtOt9V.jpg",mod:"Premium + Enhanced Privacy",badge:"vip",desc:"Telegram with premium features, enhanced privacy, and unlimited file uploads."},
+  {name:"Picsart Gold",rating:"4.9",downloads:"120K+",size:"94MB",icon:"https://iili.io/BbtOLcx.jpg",cover:"https://iili.io/BbtOLcx.jpg",mod:"Gold + All Premium Tools",badge:"hot",desc:"Picsart Gold with all premium tools, stickers, fonts, and AI effects unlocked."},
+  {name:"Alight Motion Pro",rating:"4.9",downloads:"70K+",size:"107MB",icon:"https://iili.io/BbtOgt9.jpg",cover:"https://iili.io/BbtOgt9.jpg",mod:"Pro + No Watermark + All Effects",badge:"hot",desc:"Alight Motion Pro with no watermark, all motion graphics effects, and professional animation tools."}
+];
+
+const trendingData = gamesData.slice(0,4);
+const allItems = [...gamesData, ...appsData];
+let currentApp = null, dlTimer = null;
+const CPA_DEFAULT = 'https://saveapp.store/cl/i/2719jp';
+const CPA_SHERLOCK = 'https://saveapp.store/cl/i/j7n2wo';
+
+function getCPAUrl(app){ return app.name === 'Sherlock' ? CPA_SHERLOCK : CPA_DEFAULT; }
+function getBadgeClass(b){ return b==='hot'?'hot':b==='vip'?'vip':'new'; }
+
+function renderTrending(){
+  const g = document.getElementById('trendingGrid'); g.innerHTML = '';
+  trendingData.forEach(app => {
+    const card = document.createElement('div'); card.className = 'trend-card';
+    card.innerHTML = '<div class="icon-wrap"><img src="'+app.icon+'" alt="'+app.name+'" loading="lazy"><span class="badge '+getBadgeClass(app.badge)+'">'+app.badge.toUpperCase()+'</span></div><div class="info"><div class="name">'+app.name+'</div><div class="desc">'+app.mod+'</div><div class="meta"><span><svg viewBox="0 0 24 24" class="stars"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>'+app.rating+'</span><span><svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>'+app.downloads+'</span></div></div>';
+    card.onclick = () => openModal(app);
+    g.appendChild(card);
+  });
+}
+
+function renderGames(data){
+  const g = document.getElementById('gamesGrid'); g.innerHTML = '';
+  data.forEach((app, i) => {
+    const card = createGameCard(app);
+    card.style.animationDelay = (i*0.03)+'s';
+    g.appendChild(card);
+  });
+}
+
+function createGameCard(app){
+  const card = document.createElement('div'); card.className = 'game-card';
+  const isIosOnly = app.iosOnly === true;
+  const btn = isIosOnly
+    ? '<button class="btn-download" onclick="event.stopPropagation();openModalByName(\''+app.name.replace(/'/g,"\\'")+'\')">Download for iOS</button>'
+    : '<button class="btn-download" onclick="event.stopPropagation();openModalByName(\''+app.name.replace(/'/g,"\\'")+'\')">Download Mod</button>';
+  card.innerHTML = '<div class="cover"><img src="'+(app.cover||app.icon)+'" alt="'+app.name+'" loading="lazy"><div class="overlay"></div><div class="platforms">'+(isIosOnly?'<span class="ios">iOS</span>':'<span class="android">Android</span><span class="ios">iOS</span>')+'</div></div><div class="content"><div class="name">'+app.name+'</div><div class="desc">'+app.mod+'</div><div class="footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>'+app.rating+'</div><div class="downloads"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>'+app.downloads+'</div></div>'+btn+'</div>';
+  card.onclick = () => openModal(app);
+  return card;
+}
+
+function findApp(name){ return allItems.find(x => x.name === name); }
+function openModalByName(name){ const app = findApp(name); if(app) openModal(app); }
+
+function openModal(app){
+  if(!app) return;
+  currentApp = app;
+  document.getElementById('mIcon').src = app.icon;
+  document.getElementById('mTitle').textContent = app.name;
+  document.getElementById('mSub').textContent = app.mod;
+  document.getElementById('mRating').textContent = app.rating;
+  document.getElementById('mSize').textContent = app.size;
+  document.getElementById('mDownloads').textContent = app.downloads || '10K+';
+  document.getElementById('mDesc').textContent = app.desc || app.mod;
+  const btns = document.getElementById('mBtns');
+  if(app.iosOnly){
+    btns.innerHTML = '<button class="btn btn-ios-only" onclick="startDL(\'ios\')"><svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.21-1.96 1.07-3.11-1.05.05-2.31.72-3.06 1.63-.67.81-1.26 2.12-1.1 3.26 1.19.09 2.41-.6 3.09-1.78z"/></svg>Download for iOS</button>';
+  }else{
+    btns.innerHTML = '<button class="btn btn-android" onclick="startDL(\'android\')"><svg viewBox="0 0 24 24"><path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-5.84l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48C13.85 1.23 12.95 1 12 1c-.96 0-1.86.23-2.66.63L7.85.15c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31C6.97 3.26 6 5.01 6 7h12c0-1.99-.97-3.75-2.47-4.84zM10 5H9V4h1v1zm5 5h-1V4h1v1z"/></svg>Download APK</button><button class="btn btn-ios" onclick="startDL(\'ios\')"><svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.21-1.96 1.07-3.11-1.05.05-2.31.72-3.06 1.63-.67.81-1.26 2.12-1.1 3.26 1.19.09 2.41-.6 3.09-1.78z"/></svg>Download IPA</button>';
+  }
+  document.getElementById('progWrap').classList.remove('active');
+  document.getElementById('progFill').style.width = '0%';
+  document.getElementById('progPct').textContent = '0%';
+  document.getElementById('progStatus').textContent = 'Preparing download...';
+  document.getElementById('modal').classList.add('active');
+}
+
+function closeModal(){ document.getElementById('modal').classList.remove('active'); if(dlTimer){ clearInterval(dlTimer); dlTimer = null; } }
+
+function startDL(platform){
+  document.getElementById('mBtns').style.display = 'none';
+  document.getElementById('progWrap').classList.add('active');
+  let pct = 0;
+  const statuses = ['Connecting...','Verifying...','Preparing...','Almost ready!'];
+  dlTimer = setInterval(() => {
+    pct += Math.random()*12+5; if(pct > 100) pct = 100;
+    document.getElementById('progFill').style.width = pct+'%';
+    document.getElementById('progPct').textContent = Math.floor(pct)+'%';
+    document.getElementById('progStatus').textContent = statuses[Math.min(Math.floor(pct/25), statuses.length-1)];
+    if(pct >= 100){ clearInterval(dlTimer); dlTimer = null; setTimeout(() => { closeModal(); window.location.href = getCPAUrl(currentApp); }, 400); }
+  }, 160);
+}
+
+function setSection(sec, el){
+  document.querySelectorAll('.nav-link,.mobile-nav a').forEach(a => a.classList.remove('active'));
+  if(el) el.classList.add('active');
+  document.getElementById('sec-trending').style.display = sec === 'apps' ? 'none' : 'block';
+  if(sec === 'apps') renderGames(appsData); else renderGames(gamesData);
+}
+
+function doSearch(){
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  document.querySelectorAll('.trend-card,.game-card').forEach(card => { card.style.display = card.querySelector('.name').textContent.toLowerCase().includes(q) ? '' : 'none'; });
+}
+
+function toggleTheme(){
+  const html = document.documentElement;
+  const isLight = html.getAttribute('data-theme') === 'light';
+  if(isLight){ html.removeAttribute('data-theme'); localStorage.setItem('theme','dark'); }
+  else{ html.setAttribute('data-theme','light'); localStorage.setItem('theme','light'); }
+}
+(function(){ if(localStorage.getItem('theme')==='light') document.documentElement.setAttribute('data-theme','light'); })();
+
+function toggleMobileMenu(){ document.getElementById('mobileNav').classList.toggle('show'); }
+
+window.addEventListener('scroll', () => { document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+
+renderTrending();
+renderGames(gamesData);
+</script>
+</body>
+</html>
